@@ -120,7 +120,7 @@ $conn->close();
             <div class="box fixed-box progress-history-box">
                 <ul>
                     <?php foreach ($progressHistory as $progress) {
-                        echo "<li>[{$progress['T10_ProDate']}] {$progress['T10_ProTitle']}</li>";
+                        echo "<li>[{$progress['T10_ProDate']}] - {$progress['T10_ProTitle']}</li>";
                     } ?>
                 </ul>
             </div>

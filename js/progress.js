@@ -51,7 +51,7 @@ document.getElementById('progressForm').addEventListener('submit', function (eve
         formData.append('currentProgress', progress);
         formData.append('nextWeekPlan', nextWeekPlan);
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'uploadProgress.php', true);
+        xhr.open('POST', 'submitProgress.php', true);
         xhr.onload = function () {
             if (xhr.status === 200) {
                 console.log('Success:', xhr.responseText);
