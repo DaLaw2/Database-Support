@@ -1,10 +1,8 @@
 <?php
-include 'connection.php';
+session_start();
 
-$conn = getDatabaseConnection();
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-echo "Connected successfully";
+if ($_SESSION['studentID'] ?? false)
+    header("Location: dashboard.php");
+else
+    header("Location: login.html");
+exit();
