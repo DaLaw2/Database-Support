@@ -1,0 +1,28 @@
+body, h1, label, button {
+    font-family: 'PMingLiU', 'Times New Roman', Times, serif;
+}
+
+textarea, input[type="file"], input[type="text"] {
+    font-family: 'PMingLiU', 'Times New Roman', Times, serif;
+}
+
+.error {
+    color: red;
+    display: none;
+}
+
+.uploaded-files {
+    margin-top: 10px;
+}
+
+.uploaded-files ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.uploaded-files li {
+    background: #f8f9fa;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
