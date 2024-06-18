@@ -21,11 +21,11 @@ header {
 }
 
 .main-content {
-    flex: 1; /* 讓這個區域填充剩餘空間 */
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 60px; /* 確保 header 不會重疊到內容 */
+    margin-top: 60px;
 }
 
 form {

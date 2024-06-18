@@ -44,7 +44,7 @@ document.getElementById('progressForm').addEventListener('submit', function (eve
         event.preventDefault();
     } else {
         const formData = new FormData();
-        filesArray.forEach((file, index) => {
+        filesArray.forEach((file, _) => {
             formData.append('fileUpload[]', file);
         });
         formData.append('reportTitle', title);
