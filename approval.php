@@ -1,15 +1,17 @@
 <?php
 session_start();
 
-if ($_SESSION['isLogin'] !== true) {
-    header("Location: login.php");
+//is set and is true
+if (!isset($_SESSION['isLogin']) || !$_SESSION['isLogin']) {
+    header("Location: login.html");
     exit();
 }
 
-if (isset($_SESSION['isApproval']) && $_SESSION['isApproval'] === true) {
-    header("Location: dashboard.html");
+if (isset($_SESSION['isApproval']) && $_SESSION['isApproval']) {
+    header("Location: dashboard.php");
     exit();
 }
+
 include 'connection.php';
 $conn = getDatabaseConnection();
 $studentID = $_SESSION['studentID'];
