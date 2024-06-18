@@ -46,3 +46,23 @@
     width: 100%;
     height: 64vh;
 }
+
+.personal-info-box p,
+.upload-history-box ul,
+.progress-history-box ul {
+    font-size: 20px;
+    list-style: none;
+    padding: 15px;
+    margin: 0;
+}
+
+.personal-info-box li {
+    font-size: 20px;
+}
+
+.personal-info-box p,
+.personal-info-box li,
+.upload-history-box li,
+.progress-history-box li {
+    margin: 5px 0;
+}

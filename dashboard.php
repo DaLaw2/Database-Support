@@ -49,8 +49,7 @@ while ($row_progress = $result_progress->fetch_assoc()) {
 $uploadDir = "./file/$studentID/";
 $uploadedFiles = [];
 
-function listFiles($dir, &$files)
-{
+function listFiles($dir, &$files) {
     $items = scandir($dir);
     foreach ($items as $item) {
         if ($item == '.' || $item == '..') continue;
@@ -86,7 +85,7 @@ $conn->close();
     <div class="left-buttons">
         <button onclick="location.href='dashboard.php'">個人中心</button>
         <button onclick="location.href='browse.html'">瀏覽模式</button>
-        <button onclick="location.href='uploadProgress.html'">進度繳交</button>
+        <button onclick="location.href='progress.php'">進度繳交</button>
     </div>
     <div class="right-button">
         <button onclick="location.href='logout.php'">登出</button>

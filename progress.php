@@ -1,27 +1,38 @@
+<?php
+session_start();
+
+if ($_SESSION['isLogin'] !== true) {
+    header("Location: login.php");
+    exit();
+}
+
+$studentName = $_SESSION['studentName'];
+?>
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>本週進度匯報</title>
-    <link rel="stylesheet" href="css/uploadProgress.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/progress.css">
+    <link rel="stylesheet" href="css/generalStyle.css">
 </head>
 <body>
 <div class="header">
     <div class="left-buttons">
-        <button onclick="location.href='#'">個人中心</button>
-        <button onclick="location.href='#'">瀏覽模式</button>
-        <button onclick="location.href='#'">進度繳交</button>
+        <button onclick="location.href='dashboard.php'">個人中心</button>
+        <button onclick="location.href='browse.html'">瀏覽模式</button>
+        <button onclick="location.href='progress.php'">進度繳交</button>
     </div>
     <div class="right-button">
-        <button onclick="location.href='#'">登出</button>
-        <span>XXX學生</span>
+        <button onclick="location.href='logout.php'">登出</button>
+        <span><?php echo $studentName; ?></span>
     </div>
 </div>
 <div class="container mt-5 content">
     <h1 class="mb-4">本週進度匯報</h1>
-    <form id="progressForm" action="uploadProgress.php" method="post" enctype="multipart/form-data">
+    <form id="progressForm" action="submitProgress.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="reportTitle">標題</label>
             <input type="text" class="form-control" id="reportTitle" name="reportTitle" placeholder="請輸入標題">
@@ -51,7 +62,7 @@
     </form>
 </div>
 
-<script src="js/uploadProgress.js"></script>
+<script src="js/progress.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
