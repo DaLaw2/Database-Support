@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-//is set and is true
 if (!isset($_SESSION['isLogin']) || !$_SESSION['isLogin']) {
     header("Location: login.html");
     exit();
