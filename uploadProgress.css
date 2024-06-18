@@ -6,6 +6,35 @@ textarea, input[type="file"], input[type="text"] {
     font-family: 'PMingLiU', 'Times New Roman', Times, serif;
 }
 
+input[type="file"] {
+    display: none;
+}
+
+input[type="file"] + label {
+    content: '選擇檔案';
+    display: inline-block;
+    background: #f8f9fa;
+    border: 1px solid #ced4da;
+    padding: 5px 10px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    border-radius: 0.25rem;
+    margin-right: 10px;
+}
+
+input[type="file"] + label:hover {
+    background: #e2e6ea;
+}
+
+input[type="file"] + label:active {
+    background: #dae0e5;
+}
+
 .error {
     color: red;
     display: none;

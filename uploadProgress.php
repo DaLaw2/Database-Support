@@ -14,11 +14,22 @@ if (!file_exists($targetDir)) {
     mkdir($targetDir, 0777, true);
 }
 
-$targetFile = $targetDir . basename($_FILES["fileUpload"]["name"]);
-if (move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $targetFile)) {
-    echo "The file " . htmlspecialchars(basename($_FILES["fileUpload"]["name"])) . " has been uploaded.";
+$uploadedFiles = [];
+if (isset($_FILES['fileUpload']) && !empty($_FILES['fileUpload']['name'][0])) {
+    foreach ($_FILES['fileUpload']['name'] as $key => $name) {
+        $targetFile = $targetDir . basename($name);
+        if (move_uploaded_file($_FILES['fileUpload']['tmp_name'][$key], $targetFile)) {
+            $uploadedFiles[] = htmlspecialchars($name);
+        } else {
+            echo "Sorry, there was an error uploading your file: $name";
+        }
+    }
+
+    if (!empty($uploadedFiles)) {
+        echo "The following files have been uploaded: " . implode(", ", $uploadedFiles);
+    }
 } else {
-    echo "Sorry, there was an error uploading your file.";
+    echo "No files uploaded.";
 }
 
 $conn = getDatabaseConnection();

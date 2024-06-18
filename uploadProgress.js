@@ -1,13 +1,16 @@
-document.getElementById('fileUpload').addEventListener('change', function (event) {
-    const fileList = document.getElementById('fileList');
-    fileList.innerHTML = '';
+const fileInput = document.getElementById('fileUpload');
+const fileList = document.getElementById('fileList');
+let filesArray = [];
 
+fileInput.addEventListener('change', function (event) {
     const files = event.target.files;
     for (let i = 0; i < files.length; i++) {
+        filesArray.push(files[i]);
         const li = document.createElement('li');
         li.textContent = files[i].name;
         fileList.appendChild(li);
     }
+    fileInput.value = '';
 });
 
 document.getElementById('progressForm').addEventListener('submit', function (event) {
@@ -38,6 +41,25 @@ document.getElementById('progressForm').addEventListener('submit', function (eve
     }
 
     if (!valid) {
+        event.preventDefault();
+    } else {
+        const formData = new FormData();
+        filesArray.forEach((file, index) => {
+            formData.append('fileUpload[]', file);
+        });
+        formData.append('reportTitle', title);
+        formData.append('currentProgress', progress);
+        formData.append('nextWeekPlan', nextWeekPlan);
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'uploadProgress.php', true);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                console.log('Success:', xhr.responseText);
+            } else {
+                console.log('Error:', xhr.status);
+            }
+        };
+        xhr.send(formData);
         event.preventDefault();
     }
 });
