@@ -16,12 +16,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         session_start();
         $row = $result->fetch_assoc();
+        $isAdmin = $row["T10_MemPer"];
+        $isApproval = $row["T10_MemPass"];
         $studentID = $row["T10_MemSN"];
         $studentName = $row["T10_InfName"];
+        $_SESSION["isLogin"] = true;
+        $_SESSION['isAdmin'] = $isAdmin;
+        $_SESSION['isApproval'] = $isApproval;
         $_SESSION['studentID'] = $studentID;
         $_SESSION['studentName'] = $studentName;
-        $_SESSION["isLogin"] = true;
-        echo '<script>window.location.href = "approval.html";</script>';
+        echo '<script>window.location.href = "approval.php";</script>';
     } else {
         echo "登入失敗，請檢查帳號和密碼或學生名稱是否存在。";
     }

@@ -1,8 +1,7 @@
 <?php
 include 'connection.php';
 
-$studentNumber = $_SESSION['studentNumber'] ?? "41143151";
-
+$studentNumber = $_SESSION['studentNumber'];
 $reportTitle = $_POST['reportTitle'];
 $currentProgress = $_POST['currentProgress'];
 $nextWeekPlan = $_POST['nextWeekPlan'];
