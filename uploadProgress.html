@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>本週進度匯報</title>
-    <link href="css/uploadProgress.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/uploadProgress.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container mt-5">
+<div class="header">
+    <div class="left-buttons">
+        <button onclick="location.href='#'">個人中心</button>
+        <button onclick="location.href='#'">瀏覽模式</button>
+        <button onclick="location.href='#'">進度繳交</button>
+    </div>
+    <div class="right-button">
+        <button onclick="location.href='#'">登出</button>
+        <span>XXX學生</span>
+    </div>
+</div>
+<div class="container mt-5 content">
     <h1 class="mb-4">本週進度匯報</h1>
     <form id="progressForm" action="uploadProgress.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
@@ -18,8 +29,7 @@
         </div>
         <div class="form-group">
             <label for="currentProgress">本週進度</label>
-            <textarea class="form-control" id="currentProgress" name="currentProgress" rows="5"
-                      placeholder="請輸入本週進度"></textarea>
+            <textarea class="form-control" id="currentProgress" name="currentProgress" rows="5" placeholder="請輸入本週進度"></textarea>
             <div class="error" id="progressError">請輸入本週進度</div>
         </div>
         <div class="form-group">
@@ -34,8 +44,7 @@
         </div>
         <div class="form-group">
             <label for="nextWeekPlan">下週預計進度</label>
-            <textarea class="form-control" id="nextWeekPlan" name="nextWeekPlan" rows="5"
-                      placeholder="請輸入下週預計進度"></textarea>
+            <textarea class="form-control" id="nextWeekPlan" name="nextWeekPlan" rows="5" placeholder="請輸入下週預計進度"></textarea>
             <div class="error" id="nextWeekError">請輸入下週預計進度</div>
         </div>
         <button type="submit" class="btn btn-primary">提交</button>

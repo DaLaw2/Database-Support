@@ -39,6 +39,37 @@ if ($result_lab->num_rows == 1) {
     $professorName = $row_lab['T10_InfPN'];
 }
 
+$sql_progress = "SELECT T10_ProDate, T10_ProTitle FROM T10_Project WHERE T10_ProSN='$studentID' ORDER BY T10_ProDate DESC";
+$result_progress = $conn->query($sql_progress);
+$progressHistory = [];
+while ($row_progress = $result_progress->fetch_assoc()) {
+    $progressHistory[] = $row_progress;
+}
+
+$uploadDir = "./file/$studentID/";
+$uploadedFiles = [];
+
+function listFiles($dir, &$files)
+{
+    $items = scandir($dir);
+    foreach ($items as $item) {
+        if ($item == '.' || $item == '..') continue;
+        $filePath = $dir . DIRECTORY_SEPARATOR . $item;
+        if (is_dir($filePath)) {
+            listFiles($filePath, $files);
+        } else {
+            $timestamp = basename(dirname($filePath));
+            $datetime = DateTime::createFromFormat('YmdHis', $timestamp);
+            $formattedTimestamp = $datetime ? $datetime->format('Y-m-d H:i:s') : $timestamp;
+            $files[] = "[$formattedTimestamp] - " . basename($filePath);
+        }
+    }
+}
+
+if (file_exists($uploadDir)) {
+    listFiles($uploadDir, $uploadedFiles);
+}
+
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -76,27 +107,22 @@ $conn->close();
                 </ul>
                 <p>指導教授：<?php echo $professorName; ?></p>
             </div>
-
             <h2>歷史上傳檔案</h2>
             <div class="box fixed-box upload-history-box">
-                <!-- 歷史上傳檔案列表 -->
                 <ul>
-                    <!-- 示例項目 -->
-                    <li><a href="#">檔案1</a></li>
-                    <li><a href="#">檔案2</a></li>
-                    <li><a href="#">檔案3</a></li>
+                    <?php foreach ($uploadedFiles as $file) {
+                        echo "<li>$file</li>";
+                    } ?>
                 </ul>
             </div>
         </div>
         <div class="right-column">
             <h2>進度提交歷史</h2>
             <div class="box fixed-box progress-history-box">
-                <!-- 進度提交歷史列表 -->
                 <ul>
-                    <!-- 示例項目 -->
-                    <li>進度1: 已提交</li>
-                    <li>進度2: 已提交</li>
-                    <li>進度3: 已提交</li>
+                    <?php foreach ($progressHistory as $progress) {
+                        echo "<li>[{$progress['T10_ProDate']}] {$progress['T10_ProTitle']}</li>";
+                    } ?>
                 </ul>
             </div>
         </div>

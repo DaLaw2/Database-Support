@@ -1,9 +1,15 @@
 body, h1, label, button {
     font-family: 'PMingLiU', 'Times New Roman', Times, serif;
+    color: #fff;
 }
 
 textarea, input[type="file"], input[type="text"] {
     font-family: 'PMingLiU', 'Times New Roman', Times, serif;
+}
+
+body {
+    margin: 0;
+    background-color: #1c1c1c;
 }
 
 input[type="file"] {
@@ -13,8 +19,8 @@ input[type="file"] {
 input[type="file"] + label {
     content: '選擇檔案';
     display: inline-block;
-    background: #f8f9fa;
-    border: 1px solid #ced4da;
+    background: #000;
+    border: 1px solid #0e78a6;
     padding: 5px 10px;
     outline: none;
     white-space: nowrap;
@@ -22,17 +28,17 @@ input[type="file"] + label {
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.5;
-    color: #495057;
+    color: #fff;
     border-radius: 0.25rem;
     margin-right: 10px;
 }
 
 input[type="file"] + label:hover {
-    background: #e2e6ea;
+    background: #0a5b78;
 }
 
 input[type="file"] + label:active {
-    background: #dae0e5;
+    background: #0e78a6;
 }
 
 .error {
@@ -50,8 +56,60 @@ input[type="file"] + label:active {
 }
 
 .uploaded-files li {
-    background: #f8f9fa;
+    background: #000;
     padding: 5px;
     margin-bottom: 5px;
     border-radius: 3px;
+    color: #fff;
+    border: 1px solid #0e78a6;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000;
+    border-bottom: 1px solid #0e78a6;
+    z-index: 1000;
+}
+
+.header .left-buttons, .header .right-button {
+    display: flex;
+    align-items: center;
+}
+
+.header .left-buttons {
+    flex: 1;
+}
+
+.header .right-button {
+    margin-left: auto;
+    padding-right: 40px;
+}
+
+.header button {
+    background-color: #0e78a6;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.header .right-button span {
+    margin-left: 10px;
+}
+
+.header button:hover {
+    background-color: #0a5b78;
+}
+
+.content {
+    padding: 80px 20px 20px;
 }
