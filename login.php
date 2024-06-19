@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['teamID'] = $row["T10_InfTeam"];
         $_SESSION['labID'] = $row["T10_InfLab"];
         if ($_SESSION['isAdmin']) {
-            header("Location: adminDashboard.php");
+            header("Location: adminDetail.php");
         } else {
             header("Location: dashboard.php");
         }

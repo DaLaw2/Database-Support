@@ -41,10 +41,10 @@ $studentsResult = $stmt->get_result();
 <body>
 <header>
     <div>國立虎尾科技大學</div>
-    <a href="#" class="logout">登出 [<?php echo $_SESSION['teacher_name']; ?> 老師]</a>
+    <a href="#" class="logout">登出 [<?php echo $teacherName; ?> 老師]</a>
 </header>
 <nav>
-    <a href="dashboardReview.php">返回</a>
+    <a href="adminDashboard.php">返回</a>
 </nav>
 <div class="content">
     <div class="section">

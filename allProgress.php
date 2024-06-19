@@ -51,7 +51,7 @@ $progressResult = $stmt->get_result();
     <a href="#" class="logout">登出 [<?php echo htmlspecialchars($username); ?> 老師]</a>
 </header>
 <nav>
-    <a href="dashboardReview.php">返回</a>
+    <a href="adminDashboard.php">返回</a>
 </nav>
 <div class="content">
     <div class="section">

@@ -29,14 +29,14 @@ while ($row_members = $result_members->fetch_assoc()) {
     $members[] = $row_members['T10_InfName'];
 }
 
-$sql_lab = "SELECT T10_LabName, T10_InfPN FROM T10_Lab WHERE T10_LabTN='$labID'";
+$sql_lab = "SELECT T10_LabName, T10_LabPN FROM T10_Lab WHERE T10_LabTN='$labID'";
 $result_lab = $conn->query($sql_lab);
 $labName = "";
 $professorName = "";
 if ($result_lab->num_rows == 1) {
     $row_lab = $result_lab->fetch_assoc();
     $labName = $row_lab['T10_LabName'];
-    $professorName = $row_lab['T10_InfPN'];
+    $professorName = $row_lab['T10_LabPN'];
 }
 
 $sql_progress = "SELECT T10_ProDate, T10_ProTitle FROM T10_Project WHERE T10_ProSN='$studentID' ORDER BY T10_ProDate DESC";

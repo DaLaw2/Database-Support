@@ -25,5 +25,5 @@ foreach ($_POST as $key => $value) {
     }
 }
 $conn->close();
-header("Location: dashboardReview.php");
+header("Location: adminDashboard.php");
 exit;

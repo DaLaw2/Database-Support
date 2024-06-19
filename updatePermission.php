@@ -39,7 +39,7 @@ if (isset($_POST['username']) && isset($_POST['action']) && isset($_POST['studen
         $stmt->bind_param("s", $username);
     }
     if ($stmt->execute()) {
-        header("Location: adminDashboard.php");
+        header("Location: adminDetail.php");
         exit;
     } else {
         echo 'error: ' . $stmt->error;
