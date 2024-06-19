@@ -1,8 +1,13 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['isLogin']) || !$_SESSION['isLogin']) {
+if ($_SESSION['isLogin'] !== true) {
     header("Location: login.html");
+    exit();
+}
+
+if ($_SESSION['isAdmin']) {
+    header("Location: adminDashboard.php");
     exit();
 }
 

@@ -44,8 +44,8 @@ $conn->close();
 <div class="header">
     <div class="left-buttons">
         <button onclick="location.href='adminDashboard.php'">個人中心</button>
-        <button onclick="location.href=''">進度審核</button>
         <button onclick="location.href='recode.php'">查詢專題</button>
+        <button onclick="location.href='browse.php'">進度審核</button>
     </div>
     <div class="right-button">
         <button onclick="location.href='logout.php'">登出</button>

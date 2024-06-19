@@ -6,6 +6,11 @@ if ($_SESSION['isLogin'] !== true) {
     exit();
 }
 
+if ($_SESSION['isAdmin']) {
+    header("Location: adminDashboard.php");
+    exit();
+}
+
 $studentID = $_SESSION['id'];
 $studentName = $_SESSION['name'];
 $teamID = $_SESSION['teamID'];
@@ -84,7 +89,7 @@ $conn->close();
 <div class="header">
     <div class="left-buttons">
         <button onclick="location.href='dashboard.php'">個人中心</button>
-        <button onclick="location.href='browse.html'">瀏覽模式</button>
+        <button onclick="location.href='browse.php'">瀏覽模式</button>
         <button onclick="location.href='progress.php'">進度繳交</button>
     </div>
     <div class="right-button">

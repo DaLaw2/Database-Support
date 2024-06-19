@@ -24,11 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['name'] = $row["T10_InfName"];
         $_SESSION['teamID'] = $row["T10_InfTeam"];
         $_SESSION['labID'] = $row["T10_InfLab"];
-        if ($_SESSION['isAdmin']) {
-            header("Location: adminDetail.php");
-        } else {
+        if ($_SESSION['isAdmin'])
+            header("Location: adminDashboard.php");
+        else
             header("Location: dashboard.php");
-        }
     } else {
         echo "登入失敗，請檢查帳號和密碼或學生名稱是否存在。";
     }

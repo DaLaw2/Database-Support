@@ -1,0 +1,66 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#calendar-container {
+    display: flex;
+    width: 80%;
+    border: 1px solid #ddd;
+}
+
+#calendar {
+    flex: 1;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+}
+
+.month {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.day {
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.day .marker2 {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.day .marker {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: blue;
+    border-radius: 50%;
+}
+
+#details {
+    flex: 1;
+    padding: 20px;
+}

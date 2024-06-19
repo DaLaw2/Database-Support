@@ -59,12 +59,12 @@ if ($labTN) {
 <body>
 <header>
     <div>國立虎尾科技大學</div>
-    <a href="#" class="logout">登出 [<?php echo $teacherName; ?> 老師]</a>
+    <a href="logout.php" class="logout">登出 [<?php echo $teacherName; ?> 老師]</a>
 </header>
 <nav>
     <a href="adminDashboard.php">個人中心</a>
     <a href="recode.php">查詢專題</a>
-    <a href="#">進度審核</a>
+    <a href="browse.php">進度審核</a>
 </nav>
 <div class="container">
     <div class="left-section">
@@ -75,7 +75,9 @@ if ($labTN) {
                     <label>學號：<?php echo $row['T10_CheSN']; ?></label>
                     <label>姓名：<?php echo $row['T10_CheN']; ?></label>
                     <label>留言：</label>
-                    <textarea readonly><?php echo $row['T10_CheW']; ?></textarea>
+                    <label>
+                        <textarea readonly><?php echo $row['T10_CheW']; ?></textarea>
+                    </label>
                 </div>
             <?php endwhile; ?>
             <a href="adminDetail.php">更多</a>
