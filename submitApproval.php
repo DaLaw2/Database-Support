@@ -10,8 +10,8 @@ include 'connection.php';
 $conn = getDatabaseConnection();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $studentID = $_SESSION['studentID'];
-    $studentName = $_SESSION['studentName'];
+    $studentID = $_SESSION['id'];
+    $studentName = $_SESSION['name'];
     $professorName = $conn->real_escape_string($_POST['professorName']);
     $selfRecommendation = $conn->real_escape_string($_POST['selfRecommendation']);
 

@@ -20,10 +20,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["isLogin"] = true;
         $_SESSION['isAdmin'] = $row["T10_MemPer"];
         $_SESSION['isApproval'] = $row["T10_MemPass"];
-        $_SESSION['studentID'] = $row["T10_MemSN"];
-        $_SESSION['studentName'] = $row["T10_InfName"];
-        $_SESSION['studentTeam'] = $row["T10_InfTeam"];
-        $_SESSION['studentLab'] = $row["T10_InfLab"];
+        $_SESSION['id'] = $row["T10_MemSN"];
+        $_SESSION['name'] = $row["T10_InfName"];
+        $_SESSION['teamID'] = $row["T10_InfTeam"];
+        $_SESSION['labID'] = $row["T10_InfLab"];
         echo '<script>window.location.href = "approval.php";</script>';
     } else {
         echo "登入失敗，請檢查帳號和密碼或學生名稱是否存在。";

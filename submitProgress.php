@@ -3,7 +3,7 @@ include 'connection.php';
 
 session_start();
 
-$studentNumber = $_SESSION['studentID'];
+$studentNumber = $_SESSION['id'];
 $reportTitle = $_POST['reportTitle'];
 $currentProgress = $_POST['currentProgress'];
 $nextWeekPlan = $_POST['nextWeekPlan'];

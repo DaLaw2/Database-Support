@@ -6,15 +6,15 @@ if ($_SESSION['isLogin'] !== true) {
     exit();
 }
 
-$studentName = $_SESSION['studentName'];
-$studentID = $_SESSION['studentID'];
-$teamNumber = $_SESSION['studentTeam'];
-$labNumber = $_SESSION['studentLab'];
+$studentID = $_SESSION['id'];
+$studentName = $_SESSION['name'];
+$teamID = $_SESSION['teamID'];
+$labID = $_SESSION['labID'];
 
 include 'connection.php';
 $conn = getDatabaseConnection();
 
-$sql_team = "SELECT T10_TeamName FROM T10_Team WHERE T10_TeamNum='$teamNumber'";
+$sql_team = "SELECT T10_TeamName FROM T10_Team WHERE T10_TeamNum='$teamID'";
 $result_team = $conn->query($sql_team);
 $teamName = "";
 if ($result_team->num_rows == 1) {
@@ -22,14 +22,14 @@ if ($result_team->num_rows == 1) {
     $teamName = $row_team['T10_TeamName'];
 }
 
-$sql_members = "SELECT T10_InfName FROM T10_Information WHERE T10_InfTeam='$teamNumber'";
+$sql_members = "SELECT T10_InfName FROM T10_Information WHERE T10_InfTeam='$teamID'";
 $result_members = $conn->query($sql_members);
 $members = [];
 while ($row_members = $result_members->fetch_assoc()) {
     $members[] = $row_members['T10_InfName'];
 }
 
-$sql_lab = "SELECT T10_LabName, T10_InfPN FROM T10_Lab WHERE T10_LabTN='$labNumber'";
+$sql_lab = "SELECT T10_LabName, T10_InfPN FROM T10_Lab WHERE T10_LabTN='$labID'";
 $result_lab = $conn->query($sql_lab);
 $labName = "";
 $professorName = "";

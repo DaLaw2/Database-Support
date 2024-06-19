@@ -13,7 +13,7 @@ if (isset($_SESSION['isApproval']) && $_SESSION['isApproval']) {
 
 include 'connection.php';
 $conn = getDatabaseConnection();
-$studentID = $_SESSION['studentID'];
+$studentID = $_SESSION['id'];
 
 $sql = "SELECT * FROM t10_check WHERE T10_CheSN='$studentID'";
 $result = $conn->query($sql);

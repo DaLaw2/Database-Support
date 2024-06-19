@@ -6,7 +6,7 @@ if ($_SESSION['isLogin'] !== true) {
     exit();
 }
 
-$studentName = $_SESSION['studentName'];
+$studentName = $_SESSION['name'];
 ?>
 <!DOCTYPE html>
 <html lang="zh-Hant">
