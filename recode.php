@@ -2,7 +2,12 @@
 session_start();
 
 if ($_SESSION['isLogin'] !== true) {
-    header("Location: login.php");
+    header("Location: login.html");
+    exit();
+}
+
+if (!$_SESSION['isAdmin']) {
+    header("Location: dashboard.php");
     exit();
 }
 
@@ -16,8 +21,12 @@ $sql_projects = "SELECT T10_TeamYear, T10_TeamName FROM T10_Team
                  WHERE T10_TeamLabNum='$labID' ORDER BY T10_TeamYear DESC";
 $result_projects = $conn->query($sql_projects);
 $projects = [];
+$years = [];
 while ($row_projects = $result_projects->fetch_assoc()) {
     $projects[] = $row_projects;
+    if (!in_array($row_projects['T10_TeamYear'], $years)) {
+        $years[] = $row_projects['T10_TeamYear'];
+    }
 }
 
 $conn->close();
@@ -46,12 +55,20 @@ $conn->close();
 <div class="content">
     <div class="projects-container">
         <div class="projects-list box">
-            <div class="search-container">
-                <input type="text" id="search" onkeyup="filterProjects()" placeholder="查詢專題...">
+            <div class="filter-container">
+                <select id="yearFilter" onchange="filterProjectsByYear()">
+                    <option value="">所有年度</option>
+                    <?php foreach ($years as $year) {
+                        echo "<option value='$year'>$year</option>";
+                    } ?>
+                </select>
+                <div class="search-container">
+                    <input type="text" id="search" onkeyup="filterProjects()" placeholder="查詢專題...">
+                </div>
             </div>
             <ul id="projects">
                 <?php foreach ($projects as $project) {
-                    echo "<li>[{$project['T10_TeamYear']} 年度] - {$project['T10_TeamName']}</li>";
+                    echo "<li data-year='{$project['T10_TeamYear']}'>[{$project['T10_TeamYear']}] {$project['T10_TeamName']}</li>";
                 } ?>
             </ul>
         </div>
@@ -64,6 +81,15 @@ $conn->close();
         for (let i = 0; i < projects.length; i++) {
             const project = projects[i].textContent.toLowerCase();
             projects[i].style.display = project.includes(query) ? '' : 'none';
+        }
+    }
+
+    function filterProjectsByYear() {
+        const selectedYear = document.getElementById('yearFilter').value;
+        const projects = document.getElementById('projects').getElementsByTagName('li');
+        for (let i = 0; i < projects.length; i++) {
+            const projectYear = projects[i].getAttribute('data-year');
+            projects[i].style.display = (selectedYear === "" || projectYear === selectedYear) ? '' : 'none';
         }
     }
 </script>

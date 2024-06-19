@@ -25,7 +25,21 @@ ul {
 }
 
 li {
-    margin: 10px 0;
+    margin: 20px 20px;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-container select {
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .search-container {
@@ -36,7 +50,7 @@ li {
 
 .search-container input {
     padding: 10px;
-    font-size: 18px;
+    font-size: 25px;
     width: 250px;
     border: 1px solid #ccc;
     border-radius: 5px;
