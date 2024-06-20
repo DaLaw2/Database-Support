@@ -21,8 +21,8 @@ if (isset($_POST['username']) && isset($_POST['action']) && isset($_POST['studen
             $stmt->execute();
             $result = $stmt->get_result();
             $student = $result->fetch_assoc();
-            $stmt = $conn->prepare("INSERT INTO T10_Information (T10_InfSN, T10_InfName, T10_InfLab) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $username, $student['T10_CheN'], $labID);
+            $stmt = $conn->prepare("UPDATE T10_Information SET T10_InfName = ?, T10_InfLab = ? WHERE T10_InfSN = ?");
+            $stmt->bind_param("sss", $student['T10_CheN'], $labID, $username);
             $stmt->execute();
         } else {
             echo 'error: no lab found for the teacher';

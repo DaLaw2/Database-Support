@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>進度繳交</title>
+    <link rel="stylesheet" href="https://unpkg.com/frappe-gantt/dist/frappe-gantt.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .header, .title {
+            margin-bottom: 20px;
+
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header span, .header button {
+            color: #ccc;
+        }
+
+        .header button {
+            background-color: #00bfff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .HeaderMid span{
+            color: #00bfff;
+            text-align: center;
+            font-weight: bold;
+            padding: 10px 20px;
+            font-size: 30px;
+        }
+        .HeaderMid span:last-child {
+            color: #f00;
+
+        }
+        .header-right span{
+            color: #ccc;
+            text-align: center;
+        }
+
+        .header-right button {
+            color: #000000;
+            font-weight: bold;
+            background-color: #00bfff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .title h2 {
+            text-align: center;
+
+        }
+        .title button{
+            background-color: #00bfff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #gantt {
+            background-color: #2e2e2e;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        #task-form {
+            display: none;
+            background-color: #2e2e2e;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        #task-form label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        #task-form input, #task-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        #task-form button {
+            background-color: #00bfff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="header-left">
+        <span>個人中心 </span>
+        <span> 瀏覽模式</span>
+    </div>
+    <div class = "HeaderMid">
+        <span>預計進度：</span>
+        <span>XXXXXX-XXXXXX (D3W)</span>
+    </div>
+    <div class="header-right">
+        <button id="LoginOut">登出 [ XXX (學生) ]</button>
+    </div>
+</div>
+<div class="title">
+    <h2>甘特圖：編輯</h2>
+    <button id="add-task-button">新增甘特圖</button>
+</div>
+<div id="gantt"></div>
+
+<div id="task-form">
+    <label for="task-name">任務名稱</label>
+    <input type="text" id="task-name" required>
+
+    <label for="task-start">開始日期</label>
+    <input type="date" id="task-start" required>
+
+    <label for="task-end">結束日期</label>
+    <input type="date" id="task-end" required>
+
+    <label for="task-progress">進度</label>
+    <input type="number" id="task-progress" min="0" max="100" required>
+
+    <label for="task-objective">目標</label>
+    <textarea id="task-objective" rows="3" required></textarea>
+
+    <button id="submit-task-button">提交</button>
+    <button id="close-task-button">關閉</button>
+</div>
+
+<script src="https://unpkg.com/frappe-gantt/dist/frappe-gantt.min.js"></script>
+<script src="Gantt.js"></script>
+</body>
+</html>

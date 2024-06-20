@@ -39,7 +39,7 @@ $accountApprovalResult = $stmt->get_result();
 <nav>
     <a href="adminDetail.php">個人中心</a>
     <a href="recode.php">查詢專題</a>
-    <a href="#">進度審核</a>
+    <a href="browse.php">進度審核</a>
 </nav>
 <nav>
     <a href="adminDashboard.php">返回</a>

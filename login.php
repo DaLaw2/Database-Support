@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($_SESSION['isAdmin'])
             header("Location: adminDashboard.php");
         else
-            header("Location: dashboard.php");
+            header("Location: approval.php");
     } else {
         echo "登入失敗，請檢查帳號和密碼或學生名稱是否存在。";
     }
